@@ -62,7 +62,7 @@ export default {
         { path: '/test2', title: '一级菜单2' },
         { path: '/test3', title: '一级菜单3' },
         { path: '/permission', title: '管理员权限' },
-        { path: '/i18n', title: '国际化组件' }
+        // { path: '/i18n', title: '国际化组件' }
       ],
       globalTheme: false,
     }
