@@ -1,0 +1,51 @@
+.theme1{
+  /* 将自己想要换肤后变化的样式写入该处，根据自己的需要进行修改和添加 */
+  .sidebar-el-menu:not(.el-menu--collapse) {
+    background: #012d4b !important;
+  }
+  .sidebar > ul {
+    background: #012d4b !important;
+  }
+  /* 左侧菜单栏样式 */
+  .el-menu-item{
+    color: white !important;    /* 默认 black */
+    background: #012d4b !important;
+  }
+  .el-menu-item, .el-submenu__title {
+    background: #012d4b !important;
+  }
+  
+  /* 页面顶部的样式 */
+  .header {
+    /* background-image:url("../../assets/img/main-bg1-top.jpg");
+    background-repeat:no-repeat;
+    background-size:100% 200%; */
+    background-color: #001d30 !important;
+    color: white !important;
+  }
+  .el-dropdown-link {
+    color: white !important;
+  }
+  
+  /* --------------- 水平一级菜单栏的样式--------------------- */
+  .el-menu--horizontal > .el-menu-item.is-active {
+    border-bottom: 2px solid #7FFFD4 !important;    /* 默认 blue */
+    color: #7FFFD4 !important;    /* 默认 blue */
+  }
+  .el-menu--horizontal > .el-menu-item {
+    background: transparent !important;
+    color: white !important;    /* 默认 black */
+  }
+  .el-menu--horizontal > .el-menu-item:hover {
+    background: transparent !important;
+    color: white !important;
+  }
+  
+  /* 消息按钮颜色样式 */
+  .el-icon-bell{
+    color: white;
+  }
+  .el-icon-caret-bottom{
+    color: white;
+  }
+}

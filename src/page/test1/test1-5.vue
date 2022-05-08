@@ -9,28 +9,16 @@
       <el-tag type="warning" effect="dark">标签四</el-tag>
       <el-tag type="danger" effect="dark">标签五</el-tag>
     </div>
-    <el-button size="small" plain type="primary" @click="toPath()">跳转到页面：二级菜单2-3</el-button>
   </div>
 </div>
 </template>
 
 <script>
 export default {
-  name: '',
   data(){
     return{
 
     }
-  },
-  methods: {
-    toPath(){
-      this.$router.push({
-        path: '/test2/test2-3'
-      });
-    }
   }
 }
 </script>
-
-<style>
-</style>

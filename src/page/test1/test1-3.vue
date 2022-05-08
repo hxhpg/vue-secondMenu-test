@@ -15,14 +15,10 @@
 
 <script>
 export default {
-  name: '',
   data(){
     return{
       radio: 1
     }
-  },
+  }
 }
 </script>
-
-<style>
-</style>

@@ -47,23 +47,22 @@
       </el-table>
     </div>
 
-    <div class="pagination-container">
-      <el-pagination
-        background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        layout="total, sizes, prev, pager, next, jumper"
-        :current-page.sync="listQuery.pageNum"
-        :page-size="listQuery.pageSize"
-        :page-sizes="[10,20,50]"
-        :total="total">
-      </el-pagination>
-    </div>
+    <!-- 分页组件 -->
+    <Pagination
+      :total="total"
+      :page.sync="listQuery.pageNum"
+      :limit.sync="listQuery.pageSize"
+      @pagination="getList"
+    ></Pagination>
+
   </div>
 </div>
 </template>
 
 <script>
+import Pagination from '@/components/common/Pagination';
+import { testApi } from '@/api/test';
+
 const defaultListQuery = {
   pageNum: 1,
   pageSize: 10,
@@ -74,49 +73,30 @@ export default {
   data(){
     return{
       listQuery: Object.assign({}, defaultListQuery),
-      list: null,
-      total: null,
+      list: [],
+      total: 0,
       listLoading: true,
       selectedList: [],
     }
+  },
+  components: {
+    Pagination
   },
   created() {
     this.getList();
   },
   methods:{
-    handleResetSearch() {   // 重置搜索和列表
-      this.listQuery = Object.assign({}, defaultListQuery);  // 清空输入框内容
-      this.getList();  // 刷新列表并初始化
-    },
-    handleSearchList() {  // 查询搜索
-      this.listQuery.pageNum = 1;
-      this.getList();
-    },
-    handleSizeChange(val) {  // 改变列表显示条数
-      this.listQuery.pageNum = 1;
-      this.listQuery.pageSize = val;
-      this.getList();
-    },
-    handleCurrentChange(val) {  // 改变列表显示页数
-      this.listQuery.pageNum = val;
-      this.getList();
-    },
-
     getList() {    // 获取数据列表
       this.listLoading = true;
-      this.$api.test.testApi(this.listQuery).then(res => {
+      testApi(this.listQuery).then(res => {
         this.listLoading = false;
         this.list = res.data.list;
         this.total = res.data.total;
       });
     },
-
     handleSelectionChange(val){    // 批量选择行数
-        this.selectedList = val;
+      this.selectedList = val;
     },
   }
 }
 </script>
-
-<style>
-</style>

@@ -1,10 +1,9 @@
-import { http } from "../utils/request";
-  export default{
-    testApi(datas) {
-        return http.request({
-          method: "get",
-          url: "/sso/getAuthCode",
-          data: datas
-        });
-      }
-  }
+import request from '@/utils/request.js';
+
+export function testApi(data) {  // 测试接口
+  return request({
+    url: '/hxh/api-test/testApi',
+    method: 'post',
+    data: data
+  });
+}

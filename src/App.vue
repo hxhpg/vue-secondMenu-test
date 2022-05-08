@@ -1,9 +1,22 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
+  <div id="app" :class="style ? 'theme1' : ''">
+    <router-view></router-view>
+  </div>
 </template>
-<style>
-    @import "./assets/css/main.css";     /* 整体样式*/
-    @import "./assets/css/color-dark.css";     /* 深色主题*/
-</style>
+
+<script>
+import bus from '@/utils/bus';
+
+export default {
+  data(){
+    return{
+      style: false
+    }
+  },
+  created(){
+    bus.$on('global_theme', (msg) => {    // 接收子组件传来 global_theme 的值
+      this.style = msg;
+    });
+  }
+}
+</script>

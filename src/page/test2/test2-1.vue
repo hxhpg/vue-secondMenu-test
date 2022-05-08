@@ -8,7 +8,7 @@
         <el-step title="步骤 2"></el-step>
         <el-step title="步骤 3"></el-step>
       </el-steps>
-      <el-button @click="next" type="primary">下一步</el-button>
+      <el-button @click="next()" type="primary">下一步</el-button>
     </div>
   </div>
 </div>
@@ -23,11 +23,10 @@ export default {
   },
   methods: {
     next() {
-      if (this.active++ > 2) this.active = 0;
+      if (this.active++ > 2) {
+        this.active = 0;
+      }
     }
   }
 }
 </script>
-
-<style>
-</style>

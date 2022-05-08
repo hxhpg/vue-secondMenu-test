@@ -1,106 +1,164 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body,
 #app {
-    width: 100%;
-    height: 100%;
-    background: #f0f0f0;
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
 }
 
 body {
-    font-family: 'PingFang SC', "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+  font-family: 'PingFang SC', "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
 }
 
 a {
-    text-decoration: none
+  text-decoration: none;
+}
+
+.header{
+  background-color: white;
+}
+.login-wrap{
+  background: #324157;
+}
+.plugins-tips{
+  background: #eef1f6;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+}
+.plugins-tips a{
+  color: #20a0ff;
+}
+.el-upload--text em {
+  color: #20a0ff;
+}
+.pure-button{
+  background: #20a0ff;
+}
+.tags-li.active {
+  border: 1px solid #409EFF;
+  background-color: #409EFF;
+}
+.message-title{
+  color: #20a0ff;
+}
+.collapse-btn:hover{
+  background: none;
+}
+
+/* 错误页面总体样式 */
+.error-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #f3f3f3;
+  box-sizing: border-box;
+}
+.error-code{
+  line-height: 1;
+  font-size: 250px;
+  font-weight: bolder;
+  color: #f02d2d;
+}
+.error-code span{
+  color: #00a854;
+}
+.error-desc{
+  font-size: 30px;
+  color: #777;
+}
+.error-handle{
+  margin-top: 30px;
+  padding-bottom: 200px;
+}
+.error-btn{
+  margin-left: 100px;
 }
 
 /* 页面主体部分 */
 .content-box {
-    position: absolute;
-    left: 250px;      /* 控制左侧二级菜单栏的宽度 */
-    right: 0;
-    top: 70px;
-    bottom: 0;
-    padding: 10px 20px;
-    -webkit-transition: left .3s ease-in-out;
-    transition: left .3s ease-in-out;
-    background: #f0f0f0;
+  position: absolute;
+  left: 250px;      /* 控制左侧二级菜单栏的宽度 */
+  right: 0;
+  top: 70px;
+  bottom: 0;
+  padding: 10px 20px;
+  -webkit-transition: left .3s ease-in-out;
+  transition: left .3s ease-in-out;
+  background: #f0f0f0;
 }
 .content {
-    width: auto;
-    height: 100%;
-    padding: 10px;
-    overflow-y: scroll;
-    box-sizing: border-box;
+  width: auto;
+  height: 100%;
+  padding: 10px;
+  overflow-y: scroll;
+  box-sizing: border-box;
 }
 .content-collapse {
-    left: 65px;
+  left: 65px;
 }
 .container {
-    padding: 20px;    /* 控制主体部分与主体边框的距离 */
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  padding: 20px;    /* 控制主体部分与主体边框的距离 */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .crumbs {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .el-table th {
-    background-color: #f5f7fa !important;
+  background-color: #f5f7fa !important;
 }
 
 .pagination {
-    margin: 20px 0;
-    text-align: right;
-}
-
-.plugins-tips {
-    padding: 20px 10px;
-    margin-bottom: 20px;
+  margin: 20px 0;
+  text-align: right;
 }
 
 .el-button+.el-tooltip {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .el-table tr:hover {
-    background: #f6faff;
+  background: #f6faff;
 }
 
 .mgb20 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .move-enter-active,
 .move-leave-active {
-    transition: opacity .5s;
+  transition: opacity .5s;
 }
 
 .move-enter,
 .move-leave {
-    opacity: 0;
+  opacity: 0;
 }
 
 /* 表格栏样式 */
 .table-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* 分页栏样式 */
-.pagination-container {
-    display: inline-block;
-    margin: 20px;
-    margin-left: 75%;
+.pagination-area {
+  display: inline-block;
+  margin: 20px;
+  margin-left: 75%;
 }
 
 /* 测试主体页面的 div 样式 */
 .test-div{
-    margin: 15px;
+  margin: 15px;
 }

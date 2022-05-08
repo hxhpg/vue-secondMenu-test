@@ -37,7 +37,7 @@
       </el-table>
     </div>
 
-    <div class="pagination-container">
+    <div class="pagination-area">
       <el-pagination
         background
         @size-change="handleSizeChange"
@@ -55,17 +55,20 @@
 </template>
 
 <script>
+import { testApi } from '@/api/test';
+
 const defaultListQuery = {
   pageNum: 1,
   pageSize: 10,
   keyword: ""
 };
+
 export default {
   data(){
     return{
       listQuery: Object.assign({}, defaultListQuery),
-      list: null,
-      total: null,
+      list: [],
+      total: 0,
       listLoading: true,
       selectedList: [],
     }
@@ -74,14 +77,14 @@ export default {
     this.getList();
   },
   methods:{
-    handleResetSearch() {   // 重置搜索和列表
-      this.listQuery = Object.assign({}, defaultListQuery);  // 清空输入框内容
-      this.getList();  // 刷新列表并初始化
-    },
-    handleSearchList() {  // 查询搜索
-      this.listQuery.pageNum = 1;
-      this.getList();
-    },
+    // handleResetSearch() {   // 重置搜索和列表
+    //   this.listQuery = Object.assign({}, defaultListQuery);  // 清空输入框内容
+    //   this.getList();  // 刷新列表并初始化
+    // },
+    // handleSearchList() {  // 查询搜索
+    //   this.listQuery.pageNum = 1;
+    //   this.getList();
+    // },
     handleSizeChange(val) {  // 改变列表显示条数
       this.listQuery.pageNum = 1;
       this.listQuery.pageSize = val;
@@ -94,19 +97,17 @@ export default {
 
     getList() {    // 获取数据列表
       this.listLoading = true;
-      this.$api.test.testApi(this.listQuery).then(res => {
+      testApi(this.listQuery).then(res => {
         this.listLoading = false;
         this.list = res.data.list;
         this.total = res.data.total;
+      }).catch(err => {
+        this.listLoading = false;
       });
     },
-
     handleSelectionChange(val){    // 批量选择行数
-        this.selectedList = val;
+      this.selectedList = val;
     },
   }
 }
 </script>
-
-<style>
-</style>

@@ -1,34 +1,34 @@
 import axios from 'axios';
-import global from '../global/global';
+import store from '@/store/index.js';
+import { Message } from 'element-ui';
 
-axios.defaults.baseURL = global.baseURL;
+// 创建 axios 实例
+const service = axios.create({
+  baseURL: 'https://api.example.com',
+  // withCredentials: true,
+  timeout: 60000
+});
 
-const http = {
-    request ({ url, data = {}, method = 'GET', responseType }) {
-        return new Promise((resolve, reject) => {
-            this._request(url, resolve, reject, data, method, responseType);
-        });
-    },
-    _request (url, resolve, reject, data = {}, method = 'GET', responseType) {
-        const format = method.toLocaleLowerCase() == 'get' ? 'params' : 'data';
-        axios({
-            url: url,
-            method: method,
-            [format]: data,
-            header: {
-                'content-type': 'application/json'
-            },
-            responseType
-        }).then(res => {
-                if (res.status == 200) {
-                    resolve(res.data);
-                } else if (res.code == -1) {
-                    resolve(res);
-                }
-            }).catch(error => {
-                reject(error);
-            })
-    }
-}
+// 请求拦截器
+service.interceptors.request.use(config => {
+  config.headers['authToken'] = store.state.authToken;
+  config.headers['ms_username'] = localStorage.getItem('ms_username');
+  return config;
+}, error => {
+  console.log('request error',error);
+  return Promise.reject(error);
+});
 
-export { http };
+// 响应拦截器
+service.interceptors.response.use(response => {
+  return response;
+}, error => {
+  console.log('response error', error);
+  Message({
+    message: error.message,
+    type: 'error'
+  })
+  return Promise.reject(error);
+});
+
+export default service;

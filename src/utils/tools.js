@@ -237,3 +237,88 @@ export const isSameWeek = (date1, date2) => {
   var nowOther = parseInt(date2.getTime() / oneDayTime)
   return parseInt((oldCount + 4) / 7) === parseInt((nowOther + 4) / 7)
 }
+
+// 秒数(ss) 转 d天h小时m分钟s秒 的时间格式表示
+export function formatSeconds(value) {
+  var secondTime = parseInt(value) // 秒
+  var minuteTime = 0 // 分
+  var hourTime = 0 // 小时
+  var dayTime = 0 // 天
+  var result = ''
+  if (value < 60) {
+    result = secondTime + ' 秒 '
+  } else {
+    if (secondTime >= 60) { // 如果秒数大于60，将秒数转换成整数
+      // 获取分钟，除以60取整数，得到整数分钟
+      minuteTime = parseInt(secondTime / 60)
+      // 获取秒数，秒数取佘，得到整数秒数
+      secondTime = parseInt(secondTime % 60)
+      // 如果分钟大于60，将分钟转换成小时
+      if (minuteTime >= 60) {
+        // 获取小时，获取分钟除以60，得到整数小时
+        hourTime = parseInt(minuteTime / 60)
+        // 获取小时后取佘的分，获取分钟除以60取佘的分
+        minuteTime = parseInt(minuteTime % 60)
+        if (hourTime >= 24) {
+          // 获取天数， 获取小时除以24，得到整数天
+          dayTime = parseInt(hourTime / 24)
+          // 获取小时后取余小时，获取分钟除以24取余的分；
+          hourTime = parseInt(hourTime % 24)
+        }
+      }
+    }
+    if (secondTime > 0) {
+      // secondTime = parseInt(secondTime) >= 10 ? secondTime : '0' + secondTime  // 用于个位数时前面补0
+      result = '' + secondTime + ' 秒 '
+    }
+    if (minuteTime > 0) {
+      // minuteTime = parseInt(minuteTime) >= 10 ? minuteTime : '0' + minuteTime  // 用于个位数时前面补0
+      result = '' + minuteTime + ' 分钟 ' + result
+    }
+    if (hourTime > 0) {
+      result = '' + parseInt(hourTime) + ' 小时 ' + result
+    }
+    if (dayTime > 0) {
+      result = '' + parseInt(dayTime) + ' 天 ' + result
+    }
+  }
+  return result
+}
+
+// 秒数(ss)转 hh:mm:ss 时间格式
+export function secToTime(data) {
+  var time = Number(data)
+  var h = Math.floor(time / 3600)
+  var m = Math.floor((time % 3600) / 60)
+  var s = parseInt(time % 3600) % 60
+  var hh = h < 10 ? "0" + h : h
+  var mm = m < 10 ? "0" + m : m
+  var ss = s < 10 ? "0" + s : s
+  return hh + ":" + mm + ":" + ss
+}
+
+// hh:mm:ss 时间格式转秒数(ss)
+export function timeToSec(time) {
+  if (time !== null) {
+    var s = ""
+    var hour = time.split(":")[0]
+    var min = time.split(":")[1]
+    var sec = time.split(":")[2]
+    s = Number(hour * 3600) + Number(min * 60) + Number(sec)
+    return s
+  }
+}
+
+// 获取 URL 上的参数
+export function getUrlParams(name) {
+  if (name == null || name === 'undefined') { 
+    return null 
+  }
+  var searchStr = decodeURI(window.location.href).replace('?', '&')
+  var infoIndex = searchStr.indexOf(name + '=')
+  if (infoIndex === -1) { return null }
+  var searchInfo = searchStr.substring(infoIndex + name.length + 1)
+  var tagIndex = searchInfo.indexOf('&')
+  if (tagIndex !== -1) { searchInfo = searchInfo.substring(0, tagIndex) }
+  return searchInfo
+}

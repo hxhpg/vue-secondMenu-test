@@ -1,10 +1,9 @@
-import { http } from "../utils/request";
-  export default{
-    getType(datas) {
-        return http.request({
-          method: "get",
-          url: "/sso/getAuthCode",
-          data: datas
-        });
-      }
-  }
+import request from '@/utils/request.js';
+
+export function loginApi(data) {  // 登录接口
+  return request({
+    url: '/hxh/api-test/login',
+    method: 'post',
+    data: data
+  });
+}

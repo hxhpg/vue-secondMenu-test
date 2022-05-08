@@ -1,10 +1,9 @@
 {
   "name": "data-audit-hxh",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm run serve",
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve --open",
     "build": "vue-cli-service build"
   },
   "dependencies": {
@@ -12,7 +11,10 @@
     "babel-polyfill": "^6.26.0",
     "echarts": "^4.9.0",
     "element-ui": "^2.13.2",
+    "js-cookie": "^3.0.1",
     "mavon-editor": "^2.6.17",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0",
     "view-design": "^4.3.2",
     "vue": "^2.6.10",
     "vue-cropperjs": "^3.0.0",
@@ -20,7 +22,8 @@
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.3",
     "vue-schart": "^2.0.0",
-    "vuedraggable": "^2.17.0"
+    "vuedraggable": "^2.17.0",
+    "vuex": "3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
