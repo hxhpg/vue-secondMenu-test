@@ -27,7 +27,7 @@ service.interceptors.response.use(response => {
   Message({
     message: error.message,
     type: 'error'
-  })
+  });
   return Promise.reject(error);
 });
 
