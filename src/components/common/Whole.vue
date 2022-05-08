@@ -20,7 +20,7 @@
       <div class="header-right">
         <div class="header-user-con">
           <!-- 切换主题 -->
-          <div class="btn-change-style" @click="handleChangeStyle()">
+          <div @click="handleChangeStyle()">
             <el-tooltip content="切换主题" placement="bottom">
               <i :class="globalTheme ? 'el-icon-moon' : 'el-icon-sunny'"></i>
             </el-tooltip>
@@ -100,7 +100,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .wrapper {
   width: 100%;
   height: 100%;
@@ -158,8 +158,8 @@ export default {
   background: transparent;
 }
 .el-menu--horizontal > .el-menu-item.is-active {
-  // border-bottom: 2px solid #3989fa;    /* 默认 blue */
-  // color: #3989fa;     /* 默认 blue */
+  /* border-bottom: 2px solid #3989fa;
+  color: #3989fa; */
   font-weight: bold;
 }
 .el-menu--horizontal > .el-menu-item {
