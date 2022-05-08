@@ -19,14 +19,12 @@
       
       <div class="header-right">
         <div class="header-user-con">
-
           <!-- 切换主题 -->
           <div class="btn-change-style" @click="handleChangeStyle()">
             <el-tooltip content="切换主题" placement="bottom">
               <i :class="globalTheme ? 'el-icon-moon' : 'el-icon-sunny'"></i>
             </el-tooltip>
           </div>
-
           <!-- 用户头像 -->
           <div class="user-avator">
             <img src="@/assets/img/img.jpg"/>
