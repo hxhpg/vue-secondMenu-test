@@ -153,9 +153,9 @@ a {
 
 /* 分页栏样式 */
 .pagination-area {
-  display: inline-block;
-  margin: 20px;
-  margin-left: 75%;
+  width: 100%;
+  text-align: right;
+  margin: 20px 0 10px 0;
 }
 
 /* 测试主体页面的 div 样式 */

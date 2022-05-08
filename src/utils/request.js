@@ -24,10 +24,10 @@ service.interceptors.response.use(response => {
   return response;
 }, error => {
   console.log('response error', error);
-  Message({
-    message: error.message,
-    type: 'error'
-  });
+  // Message({
+  //   message: error.message,
+  //   type: 'error'
+  // });
   return Promise.reject(error);
 });
 
